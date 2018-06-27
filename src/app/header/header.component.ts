@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PizzaComponent } from 'src/app/pizza/pizza.component';
 import { PizzaService } from 'src/app/service/pizza.service';
+import { LoginService } from 'src/app/service/login.service';
 
 @Component({
   selector: 'app-header',
@@ -11,14 +12,10 @@ export class HeaderComponent implements OnInit {
 
 
   private pizzaService: PizzaService;
-  constructor() { }
+  constructor(private login: LoginService) { }
 
   ngOnInit() {
   }
 
-  onProva(){
-    console.log("....")
-    this.pizzaService.getPizze();
 
-  }
 }

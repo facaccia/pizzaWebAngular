@@ -77,7 +77,7 @@ export class PizzaComponent implements OnInit {
 
   copiaPizza(p){
 
-    this.pizzaCopiata= Object.assign({}, p);
+    this.pizzaCopiata=JSON.parse(JSON.stringify(p));
     // this.pizzaCopiata.ingredientiList = p.ingredientiList;
     // this.pizzaCopiata.descrizione= p.descrizione;
     // this.pizzaCopiata.prezzo= p.prezzo;

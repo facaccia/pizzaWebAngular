@@ -8,6 +8,8 @@ import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Router } from '@angular/router';
 import { User } from 'src/app/entity/User';
 import { LoginService } from 'src/app/service/login.service';
+import { CarrelloComponent } from 'src/app/carrello/carrello.component';
+import { AppComponent } from 'src/app/app.component';
 
 
 @Component({
@@ -25,6 +27,8 @@ export class LoginComponent implements OnInit,OnChanges {
   private headerComponent:HeaderComponent;
   constructor(private loginService:LoginService, private route: Router) { }
   user :User= new User;
+  
+  
 
   ngOnInit() {
     console.log(this.accesso);
@@ -56,8 +60,10 @@ export class LoginComponent implements OnInit,OnChanges {
     decidi(customer){
       if (this.loginService.customer.nome!==null)
       {
+      this.loginService.accesso= true;
       this.route.navigate(["/pizze"]);
       sessionStorage.setItem("customer", JSON.stringify(customer));
+      console.log("App compo "+this.loginService.accesso);
       
       }else{
       document.getElementById("errore").innerHTML="Password o Username sbagliati" 

@@ -27,6 +27,11 @@ export class RegistrazioneComponent implements OnInit {
   ngOnInit() {
   }
 
+  tornaLogin(){
+    this.login.formRegistrazione= false;
+    this.login.accesso= false;
+  }
+
   registrazione(){
 
     let username:string= this.form.value.username;
