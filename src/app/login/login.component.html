@@ -1,0 +1,40 @@
+<div *ngIf="!accesso" class="container">
+    <div class="col-xs-12">
+
+        <div class="wrapper well col-md-12">
+            <form #form="ngForm" 
+            (ngSubmit)="login()">
+            <h1>Login</h1>
+            <h5>Pizza Web e qui per te</h5>
+            <hr class="sep"/>
+            <div class="group">
+                <input type="text"
+                required
+                    id="username"
+                    name="username" 
+                    ngModel/><span class="highlight"></span><span class="bar"></span>
+                <label>Nome</label>
+            </div>
+            <div class="group">
+                <input type="numeroTelefono" 
+                required
+                id="numeroTelefono"
+                name="numeroTelefono"
+                ngModel/><span class="highlight"></span><span class="bar"></span>
+                <label>Numero Telelono</label>
+                </div>
+                <p *ngIf="!form.valid && form.touched" style="color: red">Inserire Username & Numero di telefono</p>
+                <div class="btn-box">
+                    <button class="btn btn-info" type="submit">Accedi</button>
+                <button class="btn btn-cancel"
+                (click)="registrazione()"
+                type="button">Registrazione</button>
+                </div>
+                <p *ngIf="form.valid" class="errore" id="errore"></p>
+            </form>
+        </div>
+    </div>
+</div>
+<app-registrazione *ngIf="formRegistrazione"></app-registrazione>
+
+

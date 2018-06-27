@@ -1,0 +1,94 @@
+<div class="container-fluid">
+  <div class="col-md-7" 
+  style="float: left">
+
+    <div class="dropright open"
+    style="margin: 10px;"
+    *ngFor="let p of pizze,let i= index ">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true"
+      aria-expanded="false" (click)="cambia(p)">
+      {{p.descrizione}}  {{p.prezzo}} € ,
+      </button>
+      <div class="dropdown-menu" aria-labelledby="triggerId">
+        <div class="dropdown-item" *ngFor="let in of p.ingredientiList, let u= index" >
+          <div class="row">
+            <div class="col-6">
+              <li>{{in.descrizione}} </li>
+            </div>
+          </div>
+        </div>
+        <div class="col 12" style="text-align: center; margin-bottom: 10px;">
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#prova" (click)="copiaPizza(p)">
+              Aggiungi ingredienti
+          </button>
+        </div>
+        <div class="col 12" style="text-align: center">
+          <button type="button" class="btn btn-success" (click)="pizzeSelezionate1(p)">
+              Aggiungi pizze Selezionate
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="prova" tabindex="-1" role="dialog" aria-labelledby="prova" aria-hidden="true" >
+    <div class="modal-dialog" role="document">
+       <div class="modal-content">
+         <div class="modal-header" style=" text-align: center;">
+           <h4 class="modal-title"
+           style="color: green;"
+           id="prova">Ingredienti Base</h4>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+           </button>
+         </div>
+         <div class="modal-body row" *ngFor="let p of pizzaCopiata.ingredientiList, let u= index">
+           <div class="col-6">
+             <p>{{p.descrizione}} </p> 
+           </div>
+           <div class="col-6" style="text-align: center">
+             <button class="btn btn-danger" (click)="elimina(p, u, pizzaCopiata)">-</button>
+           </div>
+         </div>
+         <div class="col-12" style="text-align: center">
+           <button class="btn btn-success" type="button" data-toggle="modal" data-target="#exampleModalLong" (click)="ingredientiGet()">Aggiungi Ingredienti</button>
+         </div>
+         <div class="modal-footer" style="text-align: center;">
+           <button type="button" class="btn btn-primary"
+           (click)="pizzeSelezionate1(pizzaCopiata)">Aggiungi Pizza al Carrello</button>
+         </div>
+       </div>
+     </div>
+   </div>
+  
+
+  <!-- Modal -->
+ <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" *ngFor="let p of pizze,let u= index ">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header" style=" text-align: center;">
+          <h4 class="modal-title"
+          style="color: green;"
+          id="exampleModalLongTitle">Ingredienti</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body row" *ngFor="let p of ingredienti, let i = index">
+          <div class="col-6">
+            <p>{{p.descrizione}}  {{p.prezzoExtra}} €</p> 
+          </div>
+          <div class="col-6" style="text-align: center">
+            <button class="btn btn-success" (click)="aggiungi(u, p)">+</button>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+

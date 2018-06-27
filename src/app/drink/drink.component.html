@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <div class="col-md-7" 
+    style="float: left">
+  
+      <div class="dropright open"
+      style="margin: 10px;"
+      *ngFor="let d of drink, let i = index">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
+        {{d.descrizione}}  {{d.prezzo}} € ,
+        </button>
+        <div class="dropdown-menu" aria-labelledby="triggerId">
+          <div class="col 12" style="text-align: center">
+            <button type="button" class="btn btn-success" (click)="drinkSelezionati1(d)">
+                Aggiungi Bibita
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

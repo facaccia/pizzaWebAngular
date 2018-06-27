@@ -1,0 +1,37 @@
+<div class=" carrello border border-dark  rounded col-md-4" 
+style="float: right; margin-top: 10px;">
+  <div class="col-12" style="text-align:center;">
+    <h1>Carrello</h1>
+  </div>
+  <hr *ngIf="pizzaSelezionatePiene">
+  <div class="col-12"
+  style="text-align: center;"
+  *ngFor="let p of pizzeSelezionate, let i = index ">
+  <div class="col-7"  style="float: left;">
+    <p>{{p.descrizione}}</p>
+  </div>
+  <div class="col-4" style="float: right;">
+    <button type="button" class="btn btn-danger" (click)="elimina(p,i)">x</button>
+  </div>
+  </div>
+  <div class="clearfix"></div>
+  <div class="col-12"
+  style="text-align: center;"
+  *ngFor="let d of drinkSelezionati, let i = index">
+  <div class="col-7"  style="float: left;">
+      <p>{{d.descrizione}}</p>
+    </div>
+    <div class="col-4" style="float: right;">
+      <button type="button" class="btn btn-danger" (click)="eliminaDrink(d,i)">x</button>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+  <div class="prezzo" *ngIf="pizzaSelezionatePiene">
+    <p>Prezzo Carrello</p>
+    <p>{{prezzo}} €</p>
+  </div>
+  <div class="col-12" style="text-align: center;">
+    <button class="btn btn-success" *ngIf="pizzaSelezionatePiene"
+     type="button" (click)="completaOrdine()">Completa Ordine</button>
+  </div>
+</div>
