@@ -9,6 +9,9 @@ style="float: right; margin-top: 10px;">
   *ngFor="let p of pizzeSelezionate, let i = index ">
   <div class="col-7"  style="float: left;">
     <p>{{p.descrizione}}</p>
+    <div *ngFor="let d of p.ordineModificaPizzaList">
+      <p>{{d.descrizione}}, {{d.tipoModifica}}</p>
+    </div>
   </div>
   <div class="col-4" style="float: right;">
     <button type="button" class="btn btn-danger" (click)="elimina(p,i)">x</button>

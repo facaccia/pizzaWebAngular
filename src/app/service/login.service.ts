@@ -65,11 +65,11 @@ export class LoginService{
       }
 
     getUser(user){
-        return this.http.post('http://localhost:8010/cliente/getUser', user, {headers:this.headers})
+        return this.http.post('http://localhost:8010/customer/getUser', user, {headers:this.headers})
     }
 
     registrazione(user){
-        return this.http.post('http://localhost:8010/cliente/salvaCliente', user, {headers:this.headers});
+        return this.http.post('http://localhost:8010/customer/salvaCliente', user, {headers:this.headers});
     }
 
 }

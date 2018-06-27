@@ -37,12 +37,14 @@ export class RegistrazioneComponent implements OnInit {
     let username:string= this.form.value.username;
     let numeroTelefono : string= this.form.value.numeroTelefono;
     let cognome:string= this.form.value.cognome;
+    let indirizzo : string= this.form.value.indirizzo;
     this.user.cognome= cognome;
     this.user.nome= username;
+    this.user.indirizzo= indirizzo;
     this.user.telefono= numeroTelefono;
 
     this.loginService.registrazione(this.user).subscribe(
-      (response)=>{console.log(response.json())
+      (response)=>{this.user= response.json();
                   this.form.reset();
                   this.login.accesso=false
                   this.login.formRegistrazione=false}
